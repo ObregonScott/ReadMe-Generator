@@ -35,7 +35,7 @@ const questions = () => {
                     return false;
                 }
             }
-        },
+        }
 
         // Add Table of Contents
         {
@@ -80,14 +80,14 @@ const questions = () => {
                 }
             }
         },
-        
+
         // Test Instructions Input
         {
             type: 'input',
             name: 'test',
             message: 'What are the test instructions? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
+            validate: instructionInput => {
+                if (instructionInput) {
                     return true;
                 } else {
                     console.log('Please enter title!');
@@ -103,7 +103,7 @@ const questions = () => {
             message: 'What did you build this project with? (Check all that apply)',
             choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
         },
-        
+
         // What Licenses are you using?
         {
             type: 'checkbox',
@@ -123,7 +123,7 @@ const questions = () => {
                 'NONE'
             ],
         },
-        
+
         // Contributors Input
         {
             type: 'input',
@@ -189,15 +189,15 @@ const questions = () => {
 //TODO: Create a funtion to write README file
 function init() {
     inquirer.prompt(questions)
-    .then ((data) => {
-        console.log(data)
-        writeToFile(data);
-    })
+        .then((data) => {
+            console.log(data)
+            writeToFile(data);
+        })
 }
 
 //TODO: Create a funtion to initialize app
 function writeToFile(data) {
-    fs.writeFile("./README.md", generateMarkdown(data), function(err){
+    fs.writeFile("./README.md", generateMarkdown(data), function (err) {
         if (err) {
             return console.err(err);
         }

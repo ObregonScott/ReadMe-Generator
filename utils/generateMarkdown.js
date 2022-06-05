@@ -18,7 +18,7 @@ function generateMarkdown(data) {
 
   ## Description
 
-  ${projectDescription}
+  ${projectDescription(data.description)}
 
   ## Table of Contents
   - [User Story](#userStory)
@@ -28,6 +28,30 @@ function generateMarkdown(data) {
   - [License](#license)
   - [Contributing](#contribution)
   - [Author](#credit)
+
+  ## User Story
+
+  ${userStory(data.userStory)}
+
+  ## Usage
+
+  ${projectUsage(data.usage)}
+
+  ## Tests
+
+  ${instructionInput(data.test)}
+
+  ## Technology
+
+  ${languages.join(', ')}
+
+  ## License
+
+  ${license.join(', ')}
+
+  ## Contributing
+
+  ## Author
 
 `;
 }
