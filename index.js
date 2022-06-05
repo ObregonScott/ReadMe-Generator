@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
-const generateMarkdown = require('./Utils/generateMarkdown.js')
+const generateMarkdown = require('./utils/generateMarkdown')
 
 //Create and array of questions for user input
 const questions = () => {
@@ -24,20 +24,6 @@ const questions = () => {
             }
         },
 
-        // Add Table of Contents
-        {
-            type: 'confirm',
-            name: 'table',
-            message: 'Would you like to include a table of Contents?',
-            validate: tableInput => {
-                if(tableInput) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        },
-
         // Description Input
         {
             type: 'input',
@@ -47,13 +33,41 @@ const questions = () => {
                 if (projectDescription) {
                     return true;
                 } else {
-                    console.log('Plese enter a description of your project!');
+                    console.log('Please enter a description of your project!');
                     return false;
                 }
             }
         },
-        
-        
+
+        // Add Table of Contents
+        {
+            type: 'confirm',
+            name: 'table',
+            message: 'Would you like to include a table of Contents?',
+            validate: tableInput => {
+                if (tableInput) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+
+        // User Story Input
+        {
+            type: 'input',
+            name: 'userStory',
+            message: 'As a Developer, Why this application?',
+            validate: userStory => {
+                if (userStory) {
+                    return true;
+                } else {
+                    console.log('Please submit a User Story!');
+                    return false;
+                }
+            }
+        },
+
         // Usage Input
         {
             type: 'input',
@@ -64,21 +78,6 @@ const questions = () => {
                     return true;
                 } else {
                     console.log('Please explain how to use your application!');
-                    return false;
-                }
-            }
-        },
-        
-        // Contributors Input
-        {
-            type: 'input',
-            name: 'contribution',
-            message: 'Who contributed on this project?',
-            validate: projectContributors => {
-                if (projectContributors) {
-                    return true;
-                } else {
-                    console.log('Did anyone contribute? Really? Cmon you can tell me....');
                     return false;
                 }
             }
@@ -97,6 +96,14 @@ const questions = () => {
                     return false;
                 }
             }
+        },
+
+        // What Technology or languages are you using?
+        {
+            type: 'checkbox',
+            name: 'languages',
+            message: 'What did you build this project with? (Check all that apply)',
+            choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
         },
         
         // What Licenses are you using?
@@ -119,6 +126,21 @@ const questions = () => {
             ],
         },
         
+        // Contributors Input
+        {
+            type: 'input',
+            name: 'contribution',
+            message: 'Who contributed on this project?',
+            validate: projectContributors => {
+                if (projectContributors) {
+                    return true;
+                } else {
+                    console.log('Did anyone contribute? Really? Cmon you can tell me....');
+                    return false;
+                }
+            }
+        },
+
         // Who authored this work?
         {
             type: 'input',
@@ -133,7 +155,7 @@ const questions = () => {
                 }
             }
         },
-        
+
         // GitHub Username Input
         {
             type: 'input',
@@ -147,8 +169,8 @@ const questions = () => {
                     return false;
                 }
             }
-        },        
-        
+        },
+
         // Email Input
         {
             type: 'input',
@@ -167,10 +189,10 @@ const questions = () => {
 };
 
 //TODO: Create a funtion to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) { }
 
 //TODO: Create a funtion to initialize app
-function init() {}
+function init() { }
 
 // Funtion call to initialize app
 init();
