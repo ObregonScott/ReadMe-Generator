@@ -1,7 +1,7 @@
 //Packages needed for this generator application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown.js')
 
 //Create and array of questions for user input
 const questions = () => {
@@ -197,7 +197,7 @@ function init() {
 
 //TODO: Create a funtion to initialize app
 function writeToFile(data) {
-    fs.writeFile("./README.md", generateMarkdown(data), function (err) {
+    fs.writeFile("./dist/README.md", generateMarkdown(data), function (err) {
         if (err) {
             return console.err(err);
         }
