@@ -187,7 +187,7 @@ const questions = () => {
 };
 
 //TODO: Create a funtion to write README file
-function questions() {
+function initiate() {
     inquirer.prompt(questions)
         .then((data) => {
             console.log(data)
