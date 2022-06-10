@@ -34,7 +34,7 @@ const generateBadge = License =>{
 function generateMarkdown(data) {
   return `
 
-  <h1 align="center># ${data.title}</h1>
+  <h1 align="center> # ${data.title} </h1>
 
   ## Description
 
