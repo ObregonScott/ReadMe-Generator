@@ -2,20 +2,18 @@
 // If there is no license, return an empty string
 //function renderLicenseBadge(license) { }
 
-const generateBadge = License =>{
+const generateBadge = License => {
   console.log(license)
-  if(License === "MIT"){
-      return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
-  }else if(License === "GNU GPL 2.0"){
-      return "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)"
-  }else if(License === "Apache License 2.0"){
-      return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
-  }else if(License === "GNU GPL 3.0"){
-      return "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
-  }else if(License === "BSD License"){
-      return "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
-  }else if(License === "ISC License"){
-      return "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)"
+  if (License === "Apache License 2.0") {
+    return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+  } else if (License === "BSD License") {
+    return "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
+  } else if (License === "GNU GPL 2.0") {
+    return "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)"
+  } else if (License === "ISC License") {
+    return "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)"
+  } else if (License === "MIT") {
+    return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
   }
 }
 
@@ -34,7 +32,7 @@ const generateBadge = License =>{
 function generateMarkdown(data) {
   return `
 
-  <h1 align="center> # ${data.title} </h1>
+  <h1 align="center>${data.title} </h1>
 
   ## Description
 
@@ -46,8 +44,8 @@ function generateMarkdown(data) {
   - [Tests](#test)
   - [Technology](#technology)
   - [License](#license)
-  - [Contributing](#contribution)
-  - [Author](#credit)
+  - [Contributing](#contributing)
+  - [Author](#Author)
 
   ## User Story
 
@@ -67,8 +65,8 @@ function generateMarkdown(data) {
 
   ## License
 
-  ![badge](https://img.shields.io/badge/license-${data.license}-brightgreen)<br />
-
+  ${renderLicenseLink(data.license[0])}
+  
   ## Contributing
 
   ${data.contribution}
