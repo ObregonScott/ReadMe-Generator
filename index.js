@@ -110,17 +110,12 @@ const questions = () => {
             name: 'license',
             message: 'Please select appropriate licenses for this project.',
             choices: [
-                "Academic",
-                "Apache",
-                "BSD 3-clause",
-                'GP1v3',
-                "GNU",
-                "ISC",
+                "Apache License 2.0",
+                "BSD License",
+                "GNU GPL 2.0",
+                "ISC License",
                 "MIT",
-                "Mozilla",
-                "OPEN",
-                "OTHER",
-                'NONE'
+                "NONE"
             ],
         },
 
@@ -188,7 +183,7 @@ const questions = () => {
 
 //TODO: Create a funtion to write README file
 function initiate() {
-    inquirer.prompt(questions)
+    questions()
         .then((data) => {
             console.log(data)
             writeToFile(data);
@@ -197,13 +192,13 @@ function initiate() {
 
 //TODO: Create a funtion to initialize app
 function writeToFile(data) {
-    fs.writeFile("./dist/README.md", generateMarkdown(data), function (err) {
+    fs.writeFile("./dist/README.md", generateMarkdown(data), err => {
         if (err) {
             return console.err(err);
         }
-        console.log("README has been generated")
-    })
-}
+        console.log("Congratulations! README has been generated!")
+    });
+};
 
 // Funtion call to initialize app
-questions();
+initiate();
