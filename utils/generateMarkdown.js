@@ -3,7 +3,7 @@
 //function renderLicenseBadge(license) { }
 
 const generateBadge = License => {
-  console.log(license)
+  console.log(License)
   if (License === "Apache License 2.0") {
     return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
   } else if (License === "BSD License") {
@@ -55,10 +55,7 @@ for more information about MIT License click [link](https://opensource.org/licen
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
-  # Title:
-  <h1 align="center> ${data.title} </h1>
-
-  ${generateBadge}
+  # ${data.title}
 
   ## Description
 
@@ -73,7 +70,7 @@ function generateMarkdown(data) {
   - [Contributing](#contributing)
   - [Author](#Author)
 
-  ###${generateBadge}
+  ${generateBadge(data.license[0])}
   
   ## User Story
 
