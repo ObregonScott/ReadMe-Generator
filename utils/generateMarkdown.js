@@ -21,33 +21,33 @@ const generateBadge = License => {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 let renderLicenseLink = license => {
- if (license === 'Apache') {
-  return `Apache
+  if (license === 'Apache') {
+    return `Apache
 Copyright (c) ${new Date().getFullYear()}
 
 for more information about Apache license click [Link](https://opensource.org/licenses/Apache-2.0)`
-} else if (license === 'BSD 3-clause') {
-  return `BSD 3-clause
+  } else if (license === 'BSD 3-clause') {
+    return `BSD 3-clause
 Copyright (c) ${new Date().getFullYear()}
 
 for more information about BSD 3-clause license click [Link](https://opensource.org/licenses/BSD-3-Clause)`
-} else if (license === 'GPLv2') {
-  return `GPLv2
+  } else if (license === 'GPLv2') {
+    return `GPLv2
   Copyright (c) ${new Date().getFullYear()}
 
   for more information about GPlv2 license click [Link](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
   `
-} else if (license === 'ISC License'){
-  return `ISC License
+  } else if (license === 'ISC License') {
+    return `ISC License
   Copyright (c) ${new Date().getFullYear()}
 
   for more information about ISC License click [link](https://opensource.org/licenses/ISC)`
-} else if (license === 'MIT') {
-   return `MIT
+  } else if (license === 'MIT') {
+    return `MIT
 Copyright (c) ${new Date().getFullYear()}
      
 for more information about MIT License click [link](https://opensource.org/licenses/MIT)`
-} else if (license === 'None') {
+  } else if (license === 'None') {
     return `This application doesnt have any form of licensing`
   }
 };
@@ -56,33 +56,33 @@ for more information about MIT License click [link](https://opensource.org/licen
 function generateMarkdown(data) {
   return `
   # ${data.title}
-
-  ## Description
-
-  ${data.description}
-
+  
   ## Table of Contents
+  - [Description](#description)
   - [User Story](#userStory)
+  - [Instructions](#instructions)
   - [Usage](#usage)
-  - [Tests](#test)
   - [Technology](#technology)
   - [License](#license)
   - [Contributing](#contributing)
-  - [Author](#Author)
-
-  ${generateBadge(data.license[0])}
+  - [Author](#author)
+  - [Questions](#questions)
+  - [Links](#links)
   
+  ## Description
+  ${data.description}
+
   ## User Story
 
   ${data.userStory}
 
+  ## Instructions
+
+  ${data.test}
+
   ## Usage
 
   ${data.usage}
-
-  ## Tests
-
-  ${data.test}
 
   ## Technology
 
@@ -90,7 +90,8 @@ function generateMarkdown(data) {
 
   ## License
 
-  ${renderLicenseLink(data.license[0])}
+  ${generateBadge(data.license)}
+  ${renderLicenseLink(data.license)}
   
   ## Contributing
 
@@ -100,9 +101,13 @@ function generateMarkdown(data) {
 
   ${data.credit}
 
+  ### Questions:
+  For further questions you can email me at:<br />
+  ${data.email}
   
- https://github.com/${data.github}
-
+  ### Links:
+  You can find me on [GitHub](https://github.com/${data.github})
+  
 `;
 }
 

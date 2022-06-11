@@ -42,13 +42,7 @@ const questions = () => {
             type: 'confirm',
             name: 'table',
             message: 'Would you like to include a table of Contents?',
-            validate: tableInput => {
-                if (tableInput) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            defaut: true
         },
 
         // User Story Input
@@ -106,9 +100,9 @@ const questions = () => {
 
         // What Licenses are you using?
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
-            message: 'Please select appropriate licenses for this project.',
+            message: 'Please select appropriate licenses for this project.(select only ONE)',
             choices: [
                 "Apache License 2.0",
                 "BSD License",
@@ -152,10 +146,10 @@ const questions = () => {
         // GitHub Username Input
         {
             type: 'input',
-            name: 'username',
+            name: 'github',
             message: 'What is your GitHub username? (Required)',
-            validate: projectUsername => {
-                if (projectUsername) {
+            validate: githubInput => {
+                if (githubInput) {
                     return true;
                 } else {
                     console.log('Please enter user name!');
@@ -188,7 +182,8 @@ function initiate() {
             console.log(data)
             writeToFile(data);
         })
-}
+};
+
 
 //TODO: Create a funtion to initialize app
 function writeToFile(data) {
